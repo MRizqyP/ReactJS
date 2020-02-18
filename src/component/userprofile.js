@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { Jumbotron, Container } from "reactstrap";
-
+import Avatar from "./avatar";
+import Name from "./name";
+import Bio from "./bio";
 export default class userprofile extends Component {
   render() {
     return (
       <div>
         <Jumbotron fluid>
           <Container fluid>
-            <h1 className="display-3"></h1>
+            <Avatar />
+            <h1 className="display-3">
+              <Name />
+            </h1>
             <p className="lead">
-              This is a modified jumbotron that occupies the entire horizontal
-              space of its parent.
+              <Bio />
             </p>
           </Container>
         </Jumbotron>
