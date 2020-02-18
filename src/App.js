@@ -6,6 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 import Userprofile from "./component/userprofile";
 import Todo from "./component/todo";
 import Timer from "./component/timer";
+import Card from "./component/card";
 function App() {
   return (
     <Container>
@@ -16,7 +17,9 @@ function App() {
         <Col>
           <Timer />
         </Col>
-        <Col>.</Col>
+        <Col>
+          <Card />
+        </Col>
         <Col>.</Col>
       </Row>
     </Container>
