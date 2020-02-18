@@ -9,8 +9,15 @@ import Clock from "./component/clock";
 function App() {
   return (
     <Container>
-      <Hello name="Rizqy" />
-      <Clock />
+      <Row>
+        <Col>
+          <Hello name="Rizqy" />
+        </Col>
+        <Col>
+          <Clock />
+        </Col>
+        <Col></Col>
+      </Row>
     </Container>
   );
 }
