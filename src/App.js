@@ -3,15 +3,15 @@ import React from "react";
 import "./App.css";
 import { Container, Row, Col } from "reactstrap";
 
-import Hello from "./component/hello";
-import Clock from "./component/clock";
-
+import Userprofile from "./component/userprofile";
 function App() {
   return (
-    <Container>
-      <Hello name="Rizqy" />
-      <Clock />
-    </Container>
+    <Userprofile />
+    // <Container>
+    //   <Row>
+
+    //   </Row>
+    // </Container>
   );
 }
 
