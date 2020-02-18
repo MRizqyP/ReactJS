@@ -3,14 +3,12 @@ import React from "react";
 import "./App.css";
 import { Container, Row, Col } from "reactstrap";
 
-import Hello from "./component/hello";
-import Clock from "./component/clock";
+import Greeting from "./component/Greeting";
 
 function App() {
   return (
     <Container>
-      <Hello name="Rizqy" />
-      <Clock />
+      <Greeting name="Rizqy" age="19" gender="male" />
     </Container>
   );
 }
