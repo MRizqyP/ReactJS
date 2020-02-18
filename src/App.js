@@ -4,16 +4,22 @@ import "./App.css";
 import { Container, Row, Col } from "reactstrap";
 
 import Userprofile from "./component/userprofile";
+import Todo from "./component/todo";
+import Timer from "./component/timer";
 function App() {
   return (
-    <center>
-      <Userprofile />
-      {/* //{" "}
-      <Container>
-        // <Row>// </Row>
-        //{" "}
-      </Container> */}
-    </center>
+    <Container>
+      <Row>
+        <Col>
+          <Todo />
+        </Col>
+        <Col>
+          <Timer />
+        </Col>
+        <Col>.</Col>
+        <Col>.</Col>
+      </Row>
+    </Container>
   );
 }
 
