@@ -15,7 +15,6 @@ const Register = props => {
           <input
             name="nama"
             class="form-control"
-            id="InputEmail1"
             aria-describedby="emailHelp"
             ref={register({
               required: "Required"
@@ -29,8 +28,6 @@ const Register = props => {
           <input
             name="email"
             class="form-control"
-            id="InputEmail1"
-            aria-describedby="emailHelp"
             ref={register({
               required: "Required",
               pattern: {
