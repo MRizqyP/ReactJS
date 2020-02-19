@@ -6,7 +6,11 @@ export default class name extends Component {
     this.state = { name: props.name };
   }
   render() {
-    return <div>{this.props.name}</div>;
+    return (
+      <div>
+        <p className="text-Primary">{this.props.name}</p>
+      </div>
+    );
   }
 }
 name.defaultProps = {

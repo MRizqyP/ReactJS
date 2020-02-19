@@ -8,7 +8,7 @@ import Userprofile from "./component/userprofile";
 function App() {
   return (
     <center>
-      <Navbar />
+      {/* <Navbar /> */}
       <Userprofile />
 
       {/* //{" "}
