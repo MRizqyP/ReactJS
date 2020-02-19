@@ -5,7 +5,7 @@ export default function navbar() {
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        Navbar
+        Settdah
       </a>
       <button
         class="navbar-toggler"
@@ -33,6 +33,21 @@ export default function navbar() {
           <li class="nav-item">
             <Link to="/profile">
               <a class="nav-link">Profile</a>
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link to="/form">
+              <a class="nav-link">Form</a>
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link to="/multiform">
+              <a class="nav-link">Multiform</a>
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link to="/register">
+              <a class="nav-link">Register Form</a>
             </Link>
           </li>
         </ul>

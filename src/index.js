@@ -8,14 +8,25 @@ import Profile from "./component/profile";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 import Navbar from "./component/navbar";
 import Notfound from "./component/notfound";
+
+import Form from "./component/form";
+import Main from "./component/layout/main";
+import MultiForm from "./component/multiform";
+import Register from "./component/register";
 const routing = (
   <Router>
-    <Navbar />
     <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/about" component={About} />
-      <Route path="/profile" component={Profile} />
-      <Route component={Notfound} />
+      <Main>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/about" component={About} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/Form" component={Form} />
+          <Route path="/MultiForm" component={MultiForm} />
+          <Route path="/Register" component={Register} />
+          <Route component={Notfound} />
+        </Switch>
+      </Main>
     </Switch>
   </Router>
 );
