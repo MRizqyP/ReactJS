@@ -15,13 +15,15 @@ const Register = props => {
           <input
             name="nama"
             class="form-control"
-            aria-describedby="emailHelp"
             ref={register({
-              required: "Required"
+              required: "Required",
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: "Tidak di perbolehkan menggunakan angka"
+              }
             })}
           />
-
-          <span>{errors.name && errors.name.message}</span>
+          <span>{errors.nama && errors.nama.message}</span>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
@@ -46,10 +48,13 @@ const Register = props => {
             type="password"
             class="form-control"
             ref={register({
-              required: "Required"
+              required: "Required",
+              minLength: 6
             })}
           />
-          <span>{errors.password && errors.email.password}</span>
+          <span>
+            {errors.password && "Form Harus di isi dan lebih dari 6 huruf"}
+          </span>
         </div>
         <div class="form-group mb-5">
           <label for="newPassword">Confirm Password</label>
