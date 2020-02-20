@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import { Container, Row, Col } from "reactstrap";
 import axios from "axios";
-import Greeting from "./component/Greeting";
-import Hook from "./component/axioshook";
+import Hook from "./component/getbook";
 import Navbar from "./component/navbar";
+import Nyob from "./component/nyob";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
     //   <Greeting name="Rizqy" age="19" gender="male" />
     // </Container>axios.get('https://someurl)
 
-    //DarealAxios
+    // DarealAxios
     // axios
-    //   .get("http://localhost:3004/persons")
+    //   .get("https://hn.algolia.com/api/v1/search?query=redux")
     //   .then(function(response) {
     //     // handle success
     //     console.log(response);
@@ -27,8 +27,9 @@ function App() {
     //   .finally(function() {
     //     // always executed
     //   })
-    <Navbar />
-    // <Hook />
+    // <Navbar />
+    // <Nyob />
+    <Hook />
   );
 }
 

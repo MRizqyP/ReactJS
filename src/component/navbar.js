@@ -1,8 +1,9 @@
 import React from "react";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 export default function navbar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="#">
         Perpustakaan
       </a>
@@ -19,16 +20,20 @@ export default function navbar() {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/post">
-              Post <span class="sr-only"></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Get
-            </a>
-          </li>
+          <Link to="/get">
+            <li class="nav-item">
+              <a class="nav-link">
+                Get <span class="sr-only"></span>
+              </a>
+            </li>
+          </Link>
+          <Link to="/post">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Post
+              </a>
+            </li>
+          </Link>
           <li class="nav-item">
             <a class="nav-link" href="#">
               Put
