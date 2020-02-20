@@ -34,11 +34,13 @@ export default function navbar() {
               </a>
             </li>
           </Link>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Put
-            </a>
-          </li>
+          <Link to="/getbyid">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                GetById
+              </a>
+            </li>
+          </Link>
           <li class="nav-item">
             <a class="nav-link" href="#">
               Delete

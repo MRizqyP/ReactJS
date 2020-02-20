@@ -9,16 +9,18 @@ import Notfound from "./component/notfound";
 import Main from "./component/main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import POST from "./component/postbook";
+import GETBYID from "./component/gebookbyid";
 
 const routing = (
   <Router>
     <Switch>
       <Main>
         <Switch>
-          <Route exact path="/" component={GET} />
+          <Route exact path="/" component={App} />
           <Route path="/get" component={GET} />
           {/* {/* <Route path="/profile" component={Profile} /> */}
           <Route path="/post" component={POST} /> */}
+          <Route path="/getbyid" component={GETBYID} />
           <Route component={Notfound} />
         </Switch>
       </Main>

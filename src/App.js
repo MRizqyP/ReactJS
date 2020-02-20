@@ -28,8 +28,8 @@ function App() {
     //     // always executed
     //   })
     // <Navbar />
-    // <Nyob />
-    <Hook />
+    <Nyob />
+    // <Hook />
   );
 }
 
