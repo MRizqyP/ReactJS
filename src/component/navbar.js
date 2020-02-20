@@ -20,7 +20,7 @@ export default function navbar() {
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <Link class="nav-link" to="/">
               Home <span class="sr-only"></span>
             </Link>

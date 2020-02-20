@@ -11,30 +11,16 @@ import {
 
 export default function card() {
   return (
-    <div>
-      <Card>
-        <CardImg
-          top
-          width="20%"
-          src="../kinyot.jpg"
-          alt="Card image cap"
-          class="rounded-circle"
-        />
-        <CardBody>
-          <CardTitle>
-            <p className="text-success"></p>
-          </CardTitle>
-          <CardSubtitle>
-            <p className="text-success">Kinyot</p>
-          </CardSubtitle>
-          <CardText>
-            <p className="text-primary">
-              SELAYAKNYA MANUSIA BIASA AKU BUTUH MAKAN DAN MINUM
-            </p>
-          </CardText>
-          <Button>Button</Button>
-        </CardBody>
-      </Card>
+    <div class="card" className="rounded-circle">
+      <center>
+        <img src="../kinyot.jpg" width="30%" />
+        <div class="card-body">
+          <p class="card-text" class="text-success">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+      </center>
     </div>
   );
 }
