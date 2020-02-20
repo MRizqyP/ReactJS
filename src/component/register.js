@@ -2,9 +2,18 @@ import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { useForm } from "react-hook-form";
 const Register = props => {
-  const { register, handleSubmit, watch, errors, getValues } = useForm();
-  const onSubmit = data => {
-    console.log(data);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    getValues,
+    formState
+  } = useForm({
+    mode: "onChange"
+  });
+  const onSubmit = async data => {
+    alert(JSON.stringify(data));
   };
   console.log(watch("example"));
   return (
@@ -70,7 +79,11 @@ const Register = props => {
           <span>{errors.newPassword && "Password tidak sama"}</span>
         </div>
 
-        <button type="submit" class="btn btn-primary">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          disabled={!formState.isValid}
+        >
           Submit
         </button>
       </div>

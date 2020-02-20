@@ -11,7 +11,7 @@ export default class userprofile extends Component {
           <Container fluid>
             <Avatar />
             <h1 className="display-3">
-              <Name />
+              <Name name="Rizqy" />
             </h1>
             <p className="lead">
               <Bio />

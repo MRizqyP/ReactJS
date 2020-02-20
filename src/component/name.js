@@ -8,11 +8,11 @@ export default class name extends Component {
   render() {
     return (
       <div>
-        <p className="text-Primary">{this.props.name}</p>
+        <p>{this.props.name}</p>
       </div>
     );
   }
 }
 name.defaultProps = {
-  name: "Mohammad Rizqy Pratama"
+  name: "Mohammad Rzqy Pratama"
 };
