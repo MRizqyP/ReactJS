@@ -10,6 +10,7 @@ import Main from "./component/main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import POST from "./component/postbook";
 import GETBYID from "./component/gebookbyid";
+import PUT from "./component/putbooksdareal";
 
 const routing = (
   <Router>
@@ -21,6 +22,7 @@ const routing = (
           {/* {/* <Route path="/profile" component={Profile} /> */}
           <Route path="/post" component={POST} /> */}
           <Route path="/getbyid" component={GETBYID} />
+          <Route path="/put/:id" component={PUT} />
           <Route component={Notfound} />
         </Switch>
       </Main>

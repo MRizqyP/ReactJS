@@ -4,6 +4,7 @@ function Byid() {
   const [data, setData] = useState({ data: [] });
   const [query, setQuery] = useState();
   const [url, setUrl] = useState("http://localhost:3003/books");
+
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios(url);
@@ -16,7 +17,7 @@ function Byid() {
     }
     // console.log(data);
   }, [url]);
-  console.log(setQuery);
+  console.log(url);
 
   return (
     <div className="container mt-5 ">

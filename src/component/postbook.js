@@ -11,7 +11,7 @@ const Register = props => {
     language: "",
     publishedid: ""
   };
-  const { register, watch, errors, getValues, formState, reset } = useForm({
+  const { register, errors, formState, reset } = useForm({
     defaultValues
   });
 

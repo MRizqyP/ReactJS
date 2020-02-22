@@ -46,11 +46,13 @@ export default function navbar() {
               Delete
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Put
-            </a>
-          </li>
+          <Link to="/put">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Put
+              </a>
+            </li>
+          </Link>
         </ul>
       </div>
     </nav>
