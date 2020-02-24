@@ -5,10 +5,10 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 function FetchUsingHook() {
-  const [data, setData] = useState({ data: [] });
+  const [data, setData] = useState({ book: [] });
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:3003/books");
+      const result = await axios("http://localhost:8085/books");
       setData(result.data);
     };
     try {
@@ -38,12 +38,12 @@ function FetchUsingHook() {
   }
 
   function deleteProduk(id) {
-    axios.delete(`http://localhost:3003/books/${id}`);
+    axios.delete(`http://localhost:8085/books/${id}`);
     window.location.reload(false);
   }
 
   const render = () => {
-    return data.data.map((data, id) => {
+    return data.book.map((data, id) => {
       return (
         <tr key={id}>
           <td>{data.id}</td>
