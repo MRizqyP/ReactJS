@@ -12,6 +12,8 @@ import POST from "./component/postbook";
 import GETBYID from "./component/gebookbyid";
 import PUT from "./component/putbooksdareal";
 import LOGIN from "./component/login";
+import ADMIN from "./component/adminpage";
+import REGISTER from "./component/registerpage";
 
 const routing = (
   <Router>
@@ -25,6 +27,8 @@ const routing = (
           <Route path="/getbyid" component={GETBYID} />
           <Route path="/put/:id" component={PUT} />
           <Route path="/login" component={LOGIN} />
+          <Route path="/admin" component={ADMIN} />
+          <Route path="/register" component={REGISTER} />
           <Route component={Notfound} />
         </Switch>
       </Main>

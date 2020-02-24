@@ -4,17 +4,12 @@ import { Route, Redirect } from "react-router-dom";
 import createPersistedState from "@plq/use-persisted-state";
 
 export default function Login() {
-  const [usePersistedState] = createPersistedState(
-    "token",
-    window.sessionStorage
-  );
+  const [useQwe] = createPersistedState("token", window.sessionStorage);
   const [form, setForm] = useState({
     username: "",
     password: ""
   });
-  const [data, setData] = useState({
-    token: ""
-  });
+  const [toHome, setToHome] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -23,22 +18,31 @@ export default function Login() {
         username: form.username,
         password: form.password
       });
-      setData(result.data.accessToken);
+      getToken(result.data);
 
-      console.log(result.data.accessToken);
+      console.log(result);
 
-      if (result.status === 200) {
-        alert("Berhasil Login");
+      if (result.data.Role === "USER") {
+        window.location.replace("/");
+      } else if (result.data.Role === "ADMIN") {
+        window.location.replace("/admin");
+      } else if (result.data.Role === "PM") {
+        window.location.replace("/pm");
       } else {
-        throw new Error("Failed to !");
+        alert("Salah Username Atau Password");
       }
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(data);
 
-  const [token, getToken] = usePersistedState(data, "");
+  const [token, getToken] = useQwe("token", "");
+
+  // const fetchData = async = async () => {
+  //   try{
+  //     const resultt = await Axios.get("")
+  //   }
+  // }
 
   const UpdateField = e => {
     setForm({

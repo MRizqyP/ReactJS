@@ -20,13 +20,13 @@ export default class putbooksdareal extends Component {
 
   componentDidMount = async () => {
     const id = this.props.match.params.id;
-    const result = await axios.get("http://localhost:3003/books/" + id);
+    const result = await axios.get("http://localhost:8085/books/" + id);
     // const [data, setData] = useState({ data: [] });
     // setData(result.data);
 
-    this.setState(result.data.books[0]);
+    this.setState(result.data.book);
 
-    console.log(result.data.books[0]);
+    console.log(result);
   };
 
   handlerChange = e => {
@@ -34,13 +34,13 @@ export default class putbooksdareal extends Component {
     const name = target.name;
     const value = target.value;
     this.setState({ [name]: value });
-    // console.log(this.state.published_id);
+    // console.log(this.state.title);
   };
 
   handlerSubmit = async e => {
     const id = this.props.match.params.id;
     e.preventDefault();
-    await axios.put("http://localhost:3003/books/" + id, this.state);
+    await axios.put("http://localhost:8085/books/" + id, this.state);
     this.props.history.push("/get");
   };
 

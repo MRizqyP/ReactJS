@@ -66,13 +66,12 @@ const Register = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <center>
-        <p>
-          <h2>Form Input Buku</h2>
-        </p>
-      </center>
-
       <div className="container mt-5">
+        <center>
+          <p>
+            <h2>Form Input Buku</h2>
+          </p>
+        </center>
         <div class="form-group">
           <label for="nama">Title/Judul Buku</label>
           <input
