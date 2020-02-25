@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
 import createPersistedState from "@plq/use-persisted-state";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const defaultValues = {
+    username: "",
+    password: ""
+  };
+  const { register, errors, reset } = useForm({
+    defaultValues
+  });
+
   const [useQwe] = createPersistedState("token", window.sessionStorage);
   const [form, setForm] = useState({
     username: "",
@@ -15,6 +24,8 @@ export default function Login() {
     redirect: true
   });
 
+  const [status, setStatus] = useState({});
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -24,16 +35,24 @@ export default function Login() {
       });
       getToken(result.data);
       setRole(result.data.Role);
+      setStatus(result.status);
+      if (result.status === 200) {
+        alert("Berhasil Login");
+      }
       // const tokens = JSON.parse(
       //   sessionStorage.getItem("persisted_state_hook:token")
       // );
-
-      // console.log(result.data.Role);
     } catch (err) {
-      console.log(err);
+      setStatus(err.response.status);
+      if (err.response.status === 404) {
+        alert("Username Tidak Ada");
+      } else if (err.response.status === 401) {
+        alert("Password salah");
+      }
     }
+    // console.log(result.data.Role);
   };
-  // console.log(result.data);
+  // console.log(status);
 
   const UpdateField = e => {
     setForm({
@@ -59,22 +78,36 @@ export default function Login() {
             type="text"
             class="form-control"
             value={form.username}
+            ref={register({
+              required: "Required"
+            })}
             onChange={UpdateField}
           />
         </div>
+        {/* <span>{errors.username && errors.username.message}</span> */}
         <div class="form-group">
           <label for="Password">Password</label>
           <input
             name="password"
-            type="text"
+            type="password"
             class="form-control"
             value={form.password}
+            ref={register({
+              required: "Required"
+            })}
             onChange={UpdateField}
           />
         </div>
+        {/* <span>{errors.password && errors.password.message}</span> */}
 
-        <button type="submit" class="btn btn-primary">
-          Submit
+        <button
+          type="submit"
+          class="btn btn-primary"
+          onClick={() => {
+            reset(defaultValues);
+          }}
+        >
+          MASUK
         </button>
       </form>
     </div>
