@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 const Register = props => {
@@ -11,7 +10,7 @@ const Register = props => {
     language: "",
     publishedid: ""
   };
-  const { register, errors, formState, reset } = useForm({
+  const { register, errors, reset } = useForm({
     defaultValues
   });
 
@@ -35,6 +34,7 @@ const Register = props => {
       form.publishedid
     );
   };
+  console.log(printValues);
 
   const handleSubmit = async e => {
     e.preventDefault();

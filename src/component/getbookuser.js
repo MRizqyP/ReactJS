@@ -1,45 +1,38 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 function FetchUsingHook() {
+  const token = JSON.parse(
+    sessionStorage.getItem("persisted_state_hook:token")
+  );
+  const [status, setStatus] = useState();
   const [data, setData] = useState({ book: [] });
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8085/books");
+      const result = await axios({
+        method: "get",
+        url: "http://localhost:8085/books",
+        headers: {
+          Authorization: token.token.accessToken
+        }
+      });
       setData(result.data);
+      setStatus(result.status);
     };
     try {
       fetchData();
     } catch (err) {
-      alert(err);
+      setStatus(err.response.status);
     }
 
     // console.log(data);
   }, []);
 
-  function deleteConfirm(title, id) {
-    confirmAlert({
-      title: "Peringatan",
-      message: "Apakah anda yakin ingin menghapus buku " + title + "?",
-      buttons: [
-        {
-          label: "Delete",
-          onClick: () => deleteProduk(id)
-        },
-        {
-          label: "Tidak",
-          onClick: () => {}
-        }
-      ]
-    });
-  }
-
-  function deleteProduk(id) {
-    axios.delete(`http://localhost:8085/books/${id}`);
-    window.location.reload(false);
+  if (!token) {
+    return <Redirect to="/login" />;
   }
 
   const render = () => {
@@ -53,18 +46,6 @@ function FetchUsingHook() {
           <td>{data.pages}</td>
           <td>{data.language}</td>
           <td>{data.published_id}</td>
-          <td>
-            <Link to={"/put/" + data.id}>
-              <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </Link>
-          </td>
-          <td>
-            <i
-              className="fa fa-trash"
-              aria-hidden="true"
-              onClick={() => deleteConfirm(data.title, data.id)}
-            ></i>
-          </td>
         </tr>
       );
     });
@@ -82,8 +63,6 @@ function FetchUsingHook() {
             <td>Jumlah Halaman</td>
             <td>Bahasa</td>
             <td>Id Publish</td>
-            <td>Edit Buku</td>
-            <td>Hapus Buku</td>
           </tr>
         </thead>
         <tbody>{render()}</tbody>

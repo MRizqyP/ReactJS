@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Form } from "reactstrap";
 import GET from "./component/getbook";
 import Notfound from "./component/notfound";
 import Main from "./component/main";
@@ -14,6 +13,7 @@ import PUT from "./component/putbooksdareal";
 import LOGIN from "./component/login";
 import ADMIN from "./component/adminpage";
 import REGISTER from "./component/registerpage";
+import GETUSER from "./component/getbookuser";
 
 const routing = (
   <Router>
@@ -29,11 +29,11 @@ const routing = (
           <Route path="/login" component={LOGIN} />
           <Route path="/admin" component={ADMIN} />
           <Route path="/register" component={REGISTER} />
+          <Route path="/buku" component={GETUSER} />
           <Route component={Notfound} />
         </Switch>
       </Main>
     </Switch>
-    n
   </Router>
 );
 

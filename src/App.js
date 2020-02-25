@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import { Container, Row, Col } from "reactstrap";
-import axios from "axios";
-import Hook from "./component/getbook";
-import Navbar from "./component/navbar";
-import Nyob from "./component/nyob";
+// import { Container, Row, Col } from "reactstrap";
+// import axios from "axios";
+// import Hook from "./component/getbook";
+// import Navbar from "./component/navbar";
+import Nyob from "./component/home";
 
 function App() {
   return (

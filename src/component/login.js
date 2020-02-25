@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import createPersistedState from "@plq/use-persisted-state";
 
 export default function Login() {
@@ -9,7 +9,11 @@ export default function Login() {
     username: "",
     password: ""
   });
-  const [toHome, setToHome] = useState(false);
+  const [tokenss, getToken] = useQwe("token", "");
+
+  const [role, setRole] = useState({
+    redirect: true
+  });
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -19,30 +23,17 @@ export default function Login() {
         password: form.password
       });
       getToken(result.data);
+      setRole(result.data.Role);
+      // const tokens = JSON.parse(
+      //   sessionStorage.getItem("persisted_state_hook:token")
+      // );
 
-      console.log(result);
-
-      if (result.data.Role === "USER") {
-        window.location.replace("/");
-      } else if (result.data.Role === "ADMIN") {
-        window.location.replace("/admin");
-      } else if (result.data.Role === "PM") {
-        window.location.replace("/pm");
-      } else {
-        alert("Salah Username Atau Password");
-      }
+      // console.log(result.data.Role);
     } catch (err) {
       console.log(err);
     }
   };
-
-  const [token, getToken] = useQwe("token", "");
-
-  // const fetchData = async = async () => {
-  //   try{
-  //     const resultt = await Axios.get("")
-  //   }
-  // }
+  // console.log(result.data);
 
   const UpdateField = e => {
     setForm({
@@ -50,12 +41,19 @@ export default function Login() {
       [e.target.name]: e.target.value
     });
   };
-
+  if (role === "ADMIN") {
+    return <Redirect to={"/admin"} />;
+  } else if (role === "USER") {
+    return <Redirect to={"/"} />;
+  }
   return (
     <div class="container mt-5">
+      <p>
+        <h2>Halaman Login</h2>
+      </p>
       <form onSubmit={handleSubmit}>
-        <div class="form-group">
-          <label for="Email">username</label>
+        <div class="form-group mt-5">
+          <label for="Email">Username</label>
           <input
             name="username"
             type="text"

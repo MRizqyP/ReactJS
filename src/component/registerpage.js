@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { useForm } from "react-hook-form";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 const Register = props => {
   const { register, watch, errors, getValues, formState } = useForm();
 
@@ -11,6 +14,10 @@ const Register = props => {
     email: "",
     password: "",
     roles: ""
+  });
+
+  const [redirects, setRedirect] = useState({
+    redirect: false
   });
 
   const handleSubmit = async e => {
@@ -24,7 +31,8 @@ const Register = props => {
         roles: ["USER"]
       });
       if (result.status === 201) {
-        alert("Data inserted sucessfuly!");
+        alert("Selamat anda berhasil Register");
+        setRedirect({ redirect: true });
       } else {
         throw new Error("Failed to insert data!");
       }
@@ -32,6 +40,11 @@ const Register = props => {
       console.log(err);
     }
   };
+  console.log(redirects);
+
+  if (redirects.redirect === true) {
+    return <Redirect to={"/login"} />;
+  }
 
   const UpdateField = e => {
     usedForm({
@@ -43,6 +56,7 @@ const Register = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="container mt-5">
+        <p>Halaman Register</p>
         <div class="form-group">
           <label for="nama">Nama</label>
           <input
