@@ -49,8 +49,8 @@ function FetchUsingHook() {
     });
   }
 
-  function deleteProduk(id) {
-    axios({
+  async function deleteProduk(id) {
+    await axios({
       method: "delete",
       url: `http://localhost:8085/books/${id}`,
       headers: {
@@ -86,6 +86,7 @@ function FetchUsingHook() {
             >
               HAPUS
             </i>
+            deleteProduk
           </td>
         </tr>
       );

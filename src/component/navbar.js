@@ -93,6 +93,13 @@ export default function navbar() {
                     </a>
                   </li>
                 </Link>
+                <Link to="/listuser">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      List User
+                    </a>
+                  </li>
+                </Link>
                 <Link onClick={logout} to="/login">
                   <li class="nav-item">
                     <a class="nav-link">Logout</a>
@@ -124,6 +131,16 @@ export default function navbar() {
             <div class="collapse navbar-collapse" id="navbarNav">
               <div class="mr-auto"></div>
               <ul class="navbar-nav">
+                <Link to="/buku">
+                  <li class="nav-item">
+                    <a class="nav-link">Buku</a>
+                  </li>
+                </Link>
+                <Link to="/listorder">
+                  <li class="nav-item">
+                    <a class="nav-link">List Order</a>
+                  </li>
+                </Link>
                 <Link to="/buku">
                   <li class="nav-item">
                     <a class="nav-link">Buku</a>

@@ -35,6 +35,25 @@ function FetchUsingHook() {
     return <Redirect to="/login" />;
   }
 
+  async function pinjam(id) {
+    try {
+      await axios({
+        method: "post",
+        url: "http://localhost:8085/orders",
+        headers: {
+          Authorization: token.token.accessToken
+        },
+        data: {
+          userId: token.token.id,
+          bookId: id
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    alert("Anda berhasil meminjam");
+  }
+
   const render = () => {
     return data.book.map((data, id) => {
       return (
@@ -46,6 +65,11 @@ function FetchUsingHook() {
           <td>{data.pages}</td>
           <td>{data.language}</td>
           <td>{data.published_id}</td>
+          <td>
+            <button type="button" class="btn btn-warning">
+              <i class="fa fa-eye" onClick={() => pinjam(data.id)}></i>
+            </button>
+          </td>
         </tr>
       );
     });
@@ -63,6 +87,7 @@ function FetchUsingHook() {
             <td>Jumlah Halaman</td>
             <td>Bahasa</td>
             <td>Id Publish</td>
+            <td>view</td>
           </tr>
         </thead>
         <tbody>{render()}</tbody>
