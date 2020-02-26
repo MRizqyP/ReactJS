@@ -8,6 +8,7 @@ export default function navbar() {
   );
 
   function logout() {
+    window.location.replace("/");
     sessionStorage.setItem("persisted_state_hook:token", "");
     sessionStorage.clear();
   }
@@ -74,21 +75,21 @@ export default function navbar() {
                 <Link to="/get">
                   <li class="nav-item">
                     <a class="nav-link">
-                      Get <span class="sr-only"></span>
+                      List Buku <span class="sr-only"></span>
                     </a>
                   </li>
                 </Link>
                 <Link to="/post">
                   <li class="nav-item">
                     <a class="nav-link" href="#">
-                      Post
+                      Tambah Buku
                     </a>
                   </li>
                 </Link>
                 <Link to="/getbyid">
                   <li class="nav-item">
                     <a class="nav-link" href="#">
-                      GetById
+                      Cari Buku
                     </a>
                   </li>
                 </Link>

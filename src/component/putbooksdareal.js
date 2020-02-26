@@ -20,9 +20,16 @@ export default class putbooksdareal extends Component {
 
   componentDidMount = async () => {
     const id = this.props.match.params.id;
-    const result = await axios.get("http://localhost:8085/books/" + id);
-    // const [data, setData] = useState({ data: [] });
-    // setData(result.data);
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
+    const result = await axios({
+      method: "get",
+      url: "http://localhost:8085/books/" + id,
+      headers: {
+        Authorization: token.token.accessToken
+      }
+    });
 
     this.setState(result.data.book);
 
@@ -39,8 +46,18 @@ export default class putbooksdareal extends Component {
 
   handlerSubmit = async e => {
     const id = this.props.match.params.id;
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
     e.preventDefault();
-    await axios.put("http://localhost:8085/books/" + id, this.state);
+    await axios({
+      method: "put",
+      url: "http://localhost:8085/books/" + id,
+      data: this.state,
+      headers: {
+        Authorization: token.token.accessToken
+      }
+    });
     this.props.history.push("/get");
   };
 

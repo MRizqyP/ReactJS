@@ -61,9 +61,9 @@ export default function Login() {
     });
   };
   if (role === "ADMIN") {
-    return <Redirect to={"/admin"} />;
+    window.location.replace("/admin");
   } else if (role === "USER") {
-    return <Redirect to={"/"} />;
+    window.location.replace("/");
   }
   return (
     <div class="container mt-5">

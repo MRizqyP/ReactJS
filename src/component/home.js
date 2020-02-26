@@ -9,7 +9,6 @@ export default class nyob extends Component {
     return (
       <div>
         <h1>Selamat Datang di Perpustakaan</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }

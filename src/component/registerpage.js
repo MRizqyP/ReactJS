@@ -3,7 +3,14 @@ import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 const Register = props => {
-  const { register, watch, errors, getValues, formState } = useForm();
+  const {
+    register,
+    watch,
+    errors,
+    getValues,
+    formState,
+    handleSubmit
+  } = useForm();
 
   const [form, usedForm] = useState({
     name: "",
@@ -17,8 +24,7 @@ const Register = props => {
     redirect: false
   });
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const untukSubmitt = async e => {
     try {
       const result = await axios.post("http://localhost:8085/register", {
         name: form.nama,
@@ -28,6 +34,7 @@ const Register = props => {
         roles: ["USER"]
       });
       if (result.status === 201) {
+        alert("Regis Berhasil");
         setRedirect({ redirect: true });
       } else {
         throw new Error("Failed to insert data!");
@@ -50,7 +57,7 @@ const Register = props => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={e => e.preventDefault()}>
       <div className="container mt-5">
         <div class="form-group">
           <label for="nama">Nama</label>
@@ -138,6 +145,7 @@ const Register = props => {
 
         <button
           type="submit"
+          onClick={handleSubmit(untukSubmitt)}
           class="btn btn-primary"
           // disabled={!formState.isValid}
         >

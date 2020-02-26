@@ -5,10 +5,22 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 function FetchUsingHook() {
+  const token = JSON.parse(
+    sessionStorage.getItem("persisted_state_hook:token")
+  );
   const [data, setData] = useState({ book: [] });
+  const [redirects, setRedirect] = useState({
+    redirect: false
+  });
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8085/books");
+      const result = await axios({
+        method: "get",
+        url: "http://localhost:8085/books",
+        headers: {
+          Authorization: token.token.accessToken
+        }
+      });
       setData(result.data);
     };
     try {
@@ -38,7 +50,13 @@ function FetchUsingHook() {
   }
 
   function deleteProduk(id) {
-    axios.delete(`http://localhost:8085/books/${id}`);
+    axios({
+      method: "delete",
+      url: `http://localhost:8085/books/${id}`,
+      headers: {
+        Authorization: token.token.accessToken
+      }
+    });
     window.location.reload(false);
   }
 
@@ -55,15 +73,19 @@ function FetchUsingHook() {
           <td>{data.published_id}</td>
           <td>
             <Link to={"/put/" + data.id}>
-              <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i className="fa fa-pencil-square-o" aria-hidden="true">
+                EDIT
+              </i>
             </Link>
           </td>
           <td>
             <i
               className="fa fa-trash"
               aria-hidden="true"
-              onClick={() => deleteConfirm(data.title, data.id)}
-            ></i>
+              onClick={() => deleteProduk(data.id)}
+            >
+              HAPUS
+            </i>
           </td>
         </tr>
       );

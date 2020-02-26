@@ -37,18 +37,29 @@ const Register = props => {
   console.log(printValues);
 
   const handleSubmit = async e => {
+    const token = JSON.parse(
+      sessionStorage.getItem("persisted_state_hook:token")
+    );
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:3003/books", {
-        title: form.title,
-        author: form.author,
-        published_date: form.date,
-        pages: form.pages,
-        language: form.language,
-        published_id: form.publishedid
+      const result = await axios({
+        method: "POST",
+        url: "http://localhost:8085/books",
+        data: {
+          title: form.title,
+          author: form.author,
+          published_date: form.date,
+          pages: form.pages,
+          language: form.language,
+          published_id: form.publishedid
+        },
+        headers: {
+          Authorization: token.token.accessToken
+        }
       });
       if (result.status === 201) {
         alert("Data inserted sucessfuly!");
+        window.location.replace("/get");
       } else {
         throw new Error("Failed to insert data!");
       }
