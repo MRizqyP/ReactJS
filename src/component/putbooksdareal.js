@@ -33,7 +33,7 @@ export default class putbooksdareal extends Component {
 
     this.setState(result.data.book);
 
-    console.log(result);
+    // console.log(result);
   };
 
   handlerChange = e => {
@@ -62,6 +62,7 @@ export default class putbooksdareal extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="container mt-5 ">
         <form onSubmit={this.handlerSubmit}>

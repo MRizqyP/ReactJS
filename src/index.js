@@ -15,6 +15,9 @@ import ADMIN from "./component/adminpage";
 import REGISTER from "./component/registerpage";
 import GETUSER from "./component/getbookuser";
 import USERPAGE from "./component/userpage";
+import LISTORDER from "./component/listorder";
+import LISTUSER from "./component/listuser";
+import LISTORDERADMIN from "./component/listorderadmin";
 
 // console.log(token);
 
@@ -43,6 +46,7 @@ const routing = (
                 <Switch>
                   <Route exact path="/" component={USERPAGE} />
                   <Route path="/buku" component={GETUSER} />
+                  <Route path="/listorder" component={LISTORDER} />
                   <Route component={Notfound} />
                 </Switch>
               </>
@@ -57,6 +61,9 @@ const routing = (
                 <Route path="/getbyid" component={GETBYID} />
                 <Route path="/put/:id" component={PUT} />
                 <Route path="/login" component={LOGIN} />
+                <Route path="/listuser" component={LISTUSER} />
+                <Route path="/listorder" component={LISTORDER} />
+                <Route path="/listorderadmin/:id" component={LISTORDERADMIN} />
                 <Route component={Notfound} />
               </Switch>
             );

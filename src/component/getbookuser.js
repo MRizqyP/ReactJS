@@ -11,6 +11,9 @@ function FetchUsingHook() {
   const [status, setStatus] = useState();
   const [data, setData] = useState({ book: [] });
   useMemo(() => {
+    if (!token) {
+      window.location.replace("/login");
+    }
     const fetchData = async () => {
       const result = await axios({
         method: "get",
@@ -31,27 +34,19 @@ function FetchUsingHook() {
     // console.log(data);
   }, []);
 
-  if (!token) {
-    return <Redirect to="/login" />;
-  }
-
   async function pinjam(id) {
-    try {
-      await axios({
-        method: "post",
-        url: "http://localhost:8085/orders",
-        headers: {
-          Authorization: token.token.accessToken
-        },
-        data: {
-          userId: token.token.id,
-          bookId: id
-        }
-      });
-    } catch (err) {
-      console.log(err);
-    }
-    alert("Anda berhasil meminjam");
+    await axios({
+      method: "post",
+      url: "http://localhost:8085/orders",
+      headers: {
+        Authorization: token.token.accessToken
+      },
+      data: {
+        userId: token.token.id,
+        bookId: id
+      }
+    });
+    alert("Anda berhasil meminjam cek di list order");
   }
 
   const render = () => {
@@ -66,8 +61,12 @@ function FetchUsingHook() {
           <td>{data.language}</td>
           <td>{data.published_id}</td>
           <td>
-            <button type="button" class="btn btn-warning">
-              <i class="fa fa-eye" onClick={() => pinjam(data.id)}></i>
+            <button
+              type="button"
+              class="btn btn-warning"
+              onClick={() => pinjam(data.id)}
+            >
+              <i class="fa fa-eye"></i>
             </button>
           </td>
         </tr>

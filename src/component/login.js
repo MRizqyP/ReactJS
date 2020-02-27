@@ -61,6 +61,7 @@ export default function Login() {
     });
   };
   if (role === "ADMIN") {
+    // window.location.replace("/admin");
     window.location.replace("/admin");
   } else if (role === "USER") {
     window.location.replace("/");

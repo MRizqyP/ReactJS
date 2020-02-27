@@ -82,11 +82,10 @@ function FetchUsingHook() {
             <i
               className="fa fa-trash"
               aria-hidden="true"
-              onClick={() => deleteProduk(data.id)}
+              onClick={() => deleteConfirm(data.title, data.id)}
             >
               HAPUS
             </i>
-            deleteProduk
           </td>
         </tr>
       );
